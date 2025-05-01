@@ -1,0 +1,41 @@
+{
+  "name": "ts-cucumber-appium",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "cucumber-js",
+    "test:android": "cross-env PLATFORM=android cucumber-js",
+    "test:ios": "cross-env PLATFORM=ios cucumber-js",
+    "test:parallel": "concurrently -n \"Android,iOS\" -c \"blue,green\" \"npm run test:android\" \"npm run test:ios\"",
+    "appium:start": "./scripts/start-appium.sh",
+    "appium:android": "npx appium server -p 4723 --use-drivers=uiautomator2",
+    "appium:ios": "npx appium server -p 4724 --use-drivers=xcuitest",
+    "warmup:ios": "./scripts/warmup-ios.sh"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@cucumber/cucumber": "^11.2.0",
+    "@types/chai": "^5.2.1",
+    "@types/cucumber": "^6.0.1",
+    "@types/node": "^22.15.3",
+    "@types/webdriverio": "^4.13.3",
+    "@wdio/appium-service": "^9.12.7",
+    "@wdio/mocha-framework": "^9.12.6",
+    "@wdio/types": "^9.12.6",
+    "appium": "^2.18.0",
+    "chai": "^5.2.0",
+    "cucumber": "^6.0.7",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3",
+    "webdriverio": "^9.12.7"
+  },
+  "devDependencies": {
+    "appium-uiautomator2-driver": "^4.2.3",
+    "appium-xcuitest-driver": "^9.2.3",
+    "concurrently": "^9.1.2",
+    "cross-env": "^7.0.3"
+  }
+}
